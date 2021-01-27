@@ -52,7 +52,8 @@ namespace NitroxServer.Serialization
         public void ParseFile(NitroxInt3 batchId, string pathPrefix, string prefix, string suffix, List<EntitySpawnPoint> spawnPoints)
         {
             List<string> errors = new List<string>();
-            string subnauticaPath = GameInstallationFinder.Instance.FindGame(errors);
+            string subnauticaPath = /*@"D:\Subnautica";*/ GameInstallationFinder.Instance.FindGame(errors);
+            File.WriteAllText(@"D:\1.txt", $"!!subnauticaPath: {subnauticaPath}!!");
 
             if (subnauticaPath == null)
             {
@@ -61,7 +62,9 @@ namespace NitroxServer.Serialization
             }
 
             string path = Path.Combine(subnauticaPath, "Subnautica_Data", "StreamingAssets", "SNUnmanagedData", "Build18");
+            File.AppendAllText(@"D:\1.txt", $"!!path: {path}!!");
             string fileName = Path.Combine(path, pathPrefix, $"{prefix}batch-cells-{batchId.X}-{batchId.Y}-{batchId.Z}{suffix}.bin");
+            File.AppendAllText(@"D:\1.txt", $"!!fileName: {fileName}!!");
 
             if (!File.Exists(fileName))
             {

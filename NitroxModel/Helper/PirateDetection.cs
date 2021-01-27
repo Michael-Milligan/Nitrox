@@ -29,7 +29,7 @@ namespace NitroxModel.Helper
         public static bool Trigger()
         {
             OnPirateDetected();
-            return true;
+            return false;
         }
 
         public static bool TriggerOnDirectory(string subnauticaRoot)
@@ -48,7 +48,7 @@ namespace NitroxModel.Helper
             {
                 if (new FileInfo(steamDll).Length > 209000)
                 {
-                    return true;
+                    return false;
                 }
             }
             return false;
@@ -57,7 +57,7 @@ namespace NitroxModel.Helper
         private static void OnPirateDetected()
         {
             pirateDetected?.Invoke(null, EventArgs.Empty);
-            HasTriggered = true;
+            HasTriggered = false;
         }
     }
 }
